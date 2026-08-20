@@ -1,8 +1,13 @@
-<!--typo-uk-start-->
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xkbConfigRegistry SYSTEM "xkb.dtd">
+
+<xkbConfigRegistry version="1.1">
+  <layoutList>
+
     <layout>
       <configItem>
         <name>typo-uk</name>
-        <shortDescription>Ukrainian (Typographic)</shortDescription>
+        <shortDescription>uk</shortDescription>
         <description>Ukrainian (Typographic)</description>
         <languageList>
           <iso639Id>ukr</iso639Id>
@@ -11,19 +16,22 @@
           <iso3166Id>UA</iso3166Id>
         </countryList>
       </configItem>
+
       <variantList>
         <variant>
           <configItem>
             <name>typo-uk-russian</name>
+            <shortDescription>uk</shortDescription>
             <description>Ukrainian (Typographic + Russian)</description>
           </configItem>
         </variant>
       </variantList>
     </layout>
+
     <layout>
       <configItem>
         <name>typo-ru-ukrainian</name>
-        <shortDescription>Russian (Typographic + Ukrainian)</shortDescription>
+        <shortDescription>ru</shortDescription>
         <description>Russian (Typographic + Ukrainian)</description>
         <languageList>
           <iso639Id>rus</iso639Id>
@@ -34,4 +42,6 @@
       </configItem>
       <variantList/>
     </layout>
-<!--typo-uk-end-->
+
+  </layoutList>
+</xkbConfigRegistry>

@@ -1,4 +1,4 @@
-# Сумісні українські типографічні розкладки для Windows/Mac/Ubuntu.
+# Сумісні українські типографічні розкладки для Windows, macOS та Linux
 
 Дані розкладки базуються на типографічній розкладці [Іллі Бірмана](https://ilyabirman.ru/projects/typography-layout/), з де-якими модифікаціями, які полегшують роботу з програмним кодом (наприклад, трикутні лапки).
 
@@ -18,24 +18,76 @@
 3. Запустіть програму "Keyboard Installer.app" всередині архіву та перетягніть файл "UkrainianTypographicLayouts.bundle" у вікно, що відкрилося. У цьому вікні виберіть "Install for current user" для встановки розкладки для даного користувача системи.
 4. Зайдіть в System preferences > Keyboard > Input Sources та активуйте нові розкладки. Їх можна знайти, всередині группи украінської та російської мов.
 
-#### Linux (Ubuntu)
+#### Linux
 
-1. Скопіюйте команду наведену нижче, включаючи останній слеш:
+Для встановлення потрібна **libxkbcommon 0.10.0 або новіша**. Вона вже входить до складу більшості сучасних Linux-дистрибутивів.
 
+Перевірити встановлену версію можна командою:
+
+```sh
+pkg-config --modversion xkbcommon
+```
+
+Новий інсталятор підтримує **Ubuntu 22.04 LTS і новіші версії**. На інших дистрибутивах перевірте наявність і версію `libxkbcommon` за допомогою команди вище.
+
+1. Скачайте репозиторій за допомогою Git:
+
+    ```sh
+    git clone https://github.com/neochief/ukrainian-typographic-layouts.git
+    cd ukrainian-typographic-layouts/Linux
     ```
-    sudo apt-get -qq -y install wget && \
-    wget -q -O /tmp/ukrainian-typographic-layouts.tar.gz https://github.com/neochief/ukrainian-typographic-layouts/archive/master.tar.gz && \
-    tar xf /tmp/ukrainian-typographic-layouts.tar.gz -C /tmp && \
-    cd /tmp/ukrainian-typographic-layouts-master/Ubuntu && \
-    sudo /tmp/ukrainian-typographic-layouts-master/Ubuntu/install.sh
-    /
+
+    Або, якщо Git не встановлений, скачайте та розпакуйте архів за допомогою `wget`:
+
+    ```sh
+    wget -O ukrainian-typographic-layouts.tar.gz https://github.com/neochief/ukrainian-typographic-layouts/archive/refs/heads/master.tar.gz
+    tar -xzf ukrainian-typographic-layouts.tar.gz
+    cd ukrainian-typographic-layouts-master/Linux
     ```
 
-2. Відкрийте термінал (Ctrl + Alt + T), вставте команду і натисніть клавішу Enter.
+2. Запустіть інсталятор:
 
-    Ця команда встановить і включить обидві розкладки в системі, активує клавішу альтернативних символів (правий Alt), а також (опціонально) встановить перемикання розкладок через Alt + Shift.
+    ```sh
+    ./install-linux.sh
+    ```
 
-3. Дочекайтеся зеленого повідомлення про успіх. В процесі установки може знадобитися введення пароля.
+3. Дотримуйтесь інструкцій інсталятора.
+
+4. Після встановлення може знадобитися перезапуск сесії, щоб нові розкладки стали доступними в усіх програмах.
+
+##### Назви розкладок XKB
+
+Для ручного налаштування розкладок (наприклад, у Hyprland) використовуйте такі назви XKB:
+
+| Розкладка | XKB layout | XKB variant |
+|---|---|---|
+| Українська типографічна | `typo-uk` | — |
+| Українська типографічна + російська | `typo-uk` | `typo-uk-russian` |
+| Російська типографічна + українська | `typo-ru-ukrainian` | — |
+
+Наприклад, для Hyprland:
+
+```ini
+input {
+    kb_layout = us,typo-ru-ukrainian
+}
+```
+
+Для використання правого <kbd>Alt</kbd> як AltGr може знадобитися XKB-опція:
+
+```ini
+kb_options = lv3:ralt_switch
+```
+
+##### Старі версії Ubuntu
+
+Для старіших версій Ubuntu збережений оригінальний інсталятор:
+
+```sh
+./install-ubuntu-legacy.sh
+```
+
+Він встановлює розкладки безпосередньо в системний каталог XKB та налаштовує їх для Ubuntu/GNOME. Встановлені таким чином розкладки можуть бути перезаписані під час оновлення XKB.
 
 ## Карта розкладок
 
@@ -71,7 +123,6 @@
 - Англійську типографічну розкладку можна взяти у [Іллі Бірмана](https://ilyabirman.ru/projects/typography-layout/).
 
 - Англійська та російська [розкладки Іллі Бірмана для Ubuntu](https://github.com/neochief/birman-typography-layouts-for-ubuntu).
-
 
 ## Питання
 
